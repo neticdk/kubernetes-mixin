@@ -234,7 +234,7 @@ local annotation = grafana.annotation;
         template.new(
           name='cluster',
           datasource='$datasource',
-          query='label_values(up{%(cadvisorSelector)s}, %(clusterLabel)s)' % $._config,
+          query='label_values(kube_pod_info{%(kubeStateMetricsSelector)s}, %(clusterLabel)s)' % $._config,
           hide=if $._config.showMultiCluster then '' else '2',
           refresh=2
         );
